@@ -2,7 +2,7 @@ import Link from 'next/link'
 import * as S from './styles'
 type LinkWrapperProps = {
   href: string
-  children: string
+  children: React.ReactNode
 }
 
 const LinkWrapper = ({ href, children }: LinkWrapperProps) => (
