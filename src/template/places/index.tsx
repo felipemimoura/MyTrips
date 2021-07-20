@@ -1,3 +1,9 @@
+import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline'
+import LinkWrapper from 'components/LinkWrapper'
+import * as S from './style'
+import Image from 'next/image'
+import { useRouter } from 'next/dist/client/router'
+
 type ImageProps = {
   url: string
   height: number
@@ -15,14 +21,36 @@ export type PlaceTemplateProps = {
 }
 
 export default function PlacesTemplate({ place }: PlaceTemplateProps) {
+  const router = useRouter()
+
+  if (router.isFallback) return null
   return (
     <>
-      <h1>{place.name}</h1>
-      <div dangerouslySetInnerHTML={{ __html: place.description.html }} />
+      <LinkWrapper href="/">
+        <CloseOutline size={32} aria-label="Voltar para o mapa" />
+      </LinkWrapper>
 
-      {place.gallery.map((image, index) => (
-        <img key={`photo-${index}`} src={image.url} alt={place.name} />
-      ))}
+      <S.Wrapper>
+        <S.Container>
+          <S.Heading>{place.name}</S.Heading>
+          <S.Body
+            dangerouslySetInnerHTML={{ __html: place.description.html }}
+          />
+
+          <S.Gallery>
+            {place.gallery.map((image, index) => (
+              <Image
+                key={`photo-${index}`}
+                src={image.url}
+                alt={place.name}
+                width={1000}
+                height={600}
+                quality={75}
+              />
+            ))}
+          </S.Gallery>
+        </S.Container>
+      </S.Wrapper>
     </>
   )
 }
