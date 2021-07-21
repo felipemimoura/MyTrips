@@ -10,7 +10,6 @@ const Map = ({ places }: MapProps) => {
   const MAPBOX_USERID = process.env.NEXT_PUBLIC_MAPBOX_USERID
   const MAPBOX_STYLEID = process.env.NEXT_PUBLIC_MAPBOX_STYLEID
 
-  //api.mapbox.com/styles/v1/felipemoura/ckrcp61iw093r17qxc5qfwtyd.html?fresh=true&title=view&access_token=pk.eyJ1IjoiZmVsaXBlbW91cmEiLCJhIjoiY2tnNnBlZmNuMTZsMTJya2h1OWVuYWY3ZyJ9._Alt2dQPlpOCk8uJujlbuQ
   const CustomTileLayer = () => {
     console.log(MAPBOX_API_KEY)
     return MAPBOX_API_KEY ? (
