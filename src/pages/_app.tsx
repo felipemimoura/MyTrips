@@ -3,19 +3,18 @@ import { AppProps } from 'next/app'
 import Head from 'next/head'
 import GlobalStyles from 'styles/global'
 
+import { DefaultSeo } from 'next-seo'
+import SEO from '../../next-seo.config'
+
 function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>My Trips</title>
         <link rel="shortcut  icon" href="/img/icon-512.png" />
         <link rel="apple-touch-icon" href="/img/icon-512.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#06092b" />
-        <meta
-          name="description"
-          content="A simple prject to show my favorite places in the word"
-        />
+
         <link
           rel="stylesheet"
           href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
@@ -23,6 +22,7 @@ function App({ Component, pageProps }: AppProps) {
           crossOrigin=""
         />
       </Head>
+      <DefaultSeo {...SEO} />
       <GlobalStyles />
       <NextNprogress
         color="#24b7b7"
